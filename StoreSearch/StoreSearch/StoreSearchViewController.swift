@@ -32,3 +32,30 @@ class StoreSearchViewController: UIViewController {
 
 }
 
+
+extension StoreSearchViewController :UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print("The search text is \(searchBar.text)")
+    }
+}
+
+
+extension StoreSearchViewController : UITableViewDelegate {
+    
+    
+}
+
+extension StoreSearchViewController : UITableViewDataSource {
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+}
+
