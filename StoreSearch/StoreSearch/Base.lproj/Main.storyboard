@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Store Search View Controller-->
@@ -18,77 +17,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="App name,artist,song,album,e-book" translatesAutoresizingMaskIntoConstraints="NO" id="DvH-u9-maq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C9V-Gm-3cf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Zie-Dt-8Sl"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="sym-LA-TmE"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="OZV-Cq-wQP">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="a2N-w6-45o"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="lTQ-y2-0MX"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J1S-Jf-Vht">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="HjR-MK-FHB"/>
-                                    <constraint firstAttribute="height" constant="600" id="c0a-qJ-Pf8"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="HjR-MK-FHB"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="5pC-zH-ady"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="J7k-gO-W66"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DvH-u9-maq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2Vh-jW-nZ1"/>
-                            <constraint firstAttribute="trailing" secondItem="J1S-Jf-Vht" secondAttribute="trailing" id="41M-8U-3Yi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DvH-u9-maq" secondAttribute="trailing" id="4ZE-9c-XOu"/>
-                            <constraint firstItem="J1S-Jf-Vht" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5Wq-bB-LyC"/>
-                            <constraint firstItem="J1S-Jf-Vht" firstAttribute="leading" secondItem="DvH-u9-maq" secondAttribute="leading" id="5gQ-py-TyD"/>
-                            <constraint firstItem="DvH-u9-maq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="6pr-Zk-99Z"/>
-                            <constraint firstItem="DvH-u9-maq" firstAttribute="leading" secondItem="J1S-Jf-Vht" secondAttribute="leading" id="BOs-s4-hNN"/>
-                            <constraint firstAttribute="trailing" secondItem="J1S-Jf-Vht" secondAttribute="trailing" id="Kdi-7G-gcD"/>
-                            <constraint firstItem="J1S-Jf-Vht" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ox9-oO-hEg"/>
-                            <constraint firstItem="DvH-u9-maq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PSI-Ec-KhA"/>
-                            <constraint firstItem="DvH-u9-maq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="SxU-dR-9yy"/>
-                            <constraint firstItem="J1S-Jf-Vht" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="a6h-6e-K76"/>
-                            <constraint firstItem="DvH-u9-maq" firstAttribute="trailing" secondItem="J1S-Jf-Vht" secondAttribute="trailing" id="f5R-nk-nzf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="J1S-Jf-Vht" secondAttribute="trailing" id="gUC-IF-bAe"/>
-                            <constraint firstAttribute="trailing" secondItem="DvH-u9-maq" secondAttribute="trailing" id="geO-xJ-w0u"/>
-                            <constraint firstItem="J1S-Jf-Vht" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hNL-b8-vZg"/>
-                            <constraint firstItem="J1S-Jf-Vht" firstAttribute="trailing" secondItem="DvH-u9-maq" secondAttribute="trailing" id="lTH-TE-IRJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DvH-u9-maq" secondAttribute="trailing" id="w5A-1s-4jP"/>
+                            <constraint firstItem="C9V-Gm-3cf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2IO-N9-SjD"/>
+                            <constraint firstAttribute="trailing" secondItem="OZV-Cq-wQP" secondAttribute="trailing" id="9Bo-4n-0Sx"/>
+                            <constraint firstItem="OZV-Cq-wQP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IU2-Xa-atD"/>
+                            <constraint firstItem="OZV-Cq-wQP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="eR9-fr-qWv"/>
+                            <constraint firstItem="C9V-Gm-3cf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hG3-Vp-lFC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C9V-Gm-3cf" secondAttribute="bottom" id="oVS-ZQ-EUf"/>
+                            <constraint firstAttribute="trailing" secondItem="C9V-Gm-3cf" secondAttribute="trailing" id="ufN-cJ-lDy"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="5gQ-py-TyD"/>
-                                <exclude reference="Kdi-7G-gcD"/>
-                                <exclude reference="Ox9-oO-hEg"/>
-                                <exclude reference="gUC-IF-bAe"/>
-                                <exclude reference="hNL-b8-vZg"/>
-                                <exclude reference="lTH-TE-IRJ"/>
-                                <exclude reference="2Vh-jW-nZ1"/>
-                                <exclude reference="4ZE-9c-XOu"/>
-                                <exclude reference="6pr-Zk-99Z"/>
-                                <exclude reference="PSI-Ec-KhA"/>
-                                <exclude reference="geO-xJ-w0u"/>
-                                <exclude reference="w5A-1s-4jP"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
-                        <outlet property="searchBar" destination="DvH-u9-maq" id="FeQ-v6-qdU"/>
-                        <outlet property="tableView" destination="J1S-Jf-Vht" id="CQd-a8-hrq"/>
+                        <outlet property="searchBar" destination="OZV-Cq-wQP" id="WLO-F0-w3T"/>
+                        <outlet property="tableView" destination="C9V-Gm-3cf" id="Iqh-fT-lcc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="428" y="400"/>
+            <point key="canvasLocation" x="394" y="373"/>
         </scene>
     </scenes>
 </document>
