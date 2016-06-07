@@ -12,6 +12,7 @@
 		5A32B50A1D06728D007FBEF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A32B5081D06728D007FBEF7 /* Main.storyboard */; };
 		5A32B50C1D06728D007FBEF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A32B50B1D06728D007FBEF7 /* Assets.xcassets */; };
 		5A32B50F1D06728D007FBEF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A32B50D1D06728D007FBEF7 /* LaunchScreen.storyboard */; };
+		5A32B5181D06B8A7007FBEF7 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32B5171D06B8A7007FBEF7 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		5A32B50B1D06728D007FBEF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A32B50E1D06728D007FBEF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A32B5101D06728D007FBEF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A32B5171D06B8A7007FBEF7 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		5A32B5031D06728D007FBEF7 /* StoreSearch */ = {
 			isa = PBXGroup;
 			children = (
+				5A32B5161D06B884007FBEF7 /* model */,
 				5A32B5041D06728D007FBEF7 /* AppDelegate.swift */,
 				5A32B5061D06728D007FBEF7 /* StoreSearchViewController.swift */,
 				5A32B5081D06728D007FBEF7 /* Main.storyboard */,
@@ -62,6 +65,14 @@
 				5A32B5101D06728D007FBEF7 /* Info.plist */,
 			);
 			path = StoreSearch;
+			sourceTree = "<group>";
+		};
+		5A32B5161D06B884007FBEF7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5A32B5171D06B8A7007FBEF7 /* SearchResult.swift */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A32B5071D06728D007FBEF7 /* StoreSearchViewController.swift in Sources */,
+				5A32B5181D06B8A7007FBEF7 /* SearchResult.swift in Sources */,
 				5A32B5051D06728D007FBEF7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
