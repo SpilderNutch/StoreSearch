@@ -9,6 +9,11 @@
 import UIKit
 
 class StoreSearchViewController: UIViewController {
+    
+    
+    struct TableViewCellIdentifiers {
+        static let searchResultCell = "SearchResultCell"
+    }
 
     
     var searchResults = [SearchResult]()
@@ -25,9 +30,11 @@ class StoreSearchViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         
-        let cellNib = UINib(nibName: "SearchResultCell", bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: "SearchResultCell")
+        let cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
         
+        //给tableView定义高度为80。
+        tableView.rowHeight = 80
         
         
     }
@@ -105,7 +112,7 @@ extension StoreSearchViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultCell", forIndexPath: indexPath) as! SearchResultCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchResultCell, forIndexPath: indexPath) as! SearchResultCell
         
         if searchResults.count == 0 {
             cell.nameLabel.text = "(Nothing Found)"
@@ -121,10 +128,11 @@ extension StoreSearchViewController : UITableViewDataSource {
         return cell
     }
     
-    
+    /**
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
+    */
     
 }
 

@@ -15,6 +15,7 @@
 		5A32B5181D06B8A7007FBEF7 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32B5171D06B8A7007FBEF7 /* SearchResult.swift */; };
 		5A32B51A1D06C429007FBEF7 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A32B5191D06C429007FBEF7 /* SearchResultCell.xib */; };
 		5A32B51C1D06E5F4007FBEF7 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32B51B1D06E5F4007FBEF7 /* SearchResultCell.swift */; };
+		5A32B51E1D07B576007FBEF7 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A32B51D1D07B576007FBEF7 /* NothingFoundCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5A32B5171D06B8A7007FBEF7 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		5A32B5191D06C429007FBEF7 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		5A32B51B1D06E5F4007FBEF7 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		5A32B51D1D07B576007FBEF7 /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 		5A32B4F81D06728C007FBEF7 = {
 			isa = PBXGroup;
 			children = (
+				5A32B51D1D07B576007FBEF7 /* NothingFoundCell.xib */,
 				5A32B51B1D06E5F4007FBEF7 /* SearchResultCell.swift */,
 				5A32B5191D06C429007FBEF7 /* SearchResultCell.xib */,
 				5A32B5031D06728D007FBEF7 /* StoreSearch */,
@@ -143,6 +146,7 @@
 				5A32B50F1D06728D007FBEF7 /* LaunchScreen.storyboard in Resources */,
 				5A32B50C1D06728D007FBEF7 /* Assets.xcassets in Resources */,
 				5A32B51A1D06C429007FBEF7 /* SearchResultCell.xib in Resources */,
+				5A32B51E1D07B576007FBEF7 /* NothingFoundCell.xib in Resources */,
 				5A32B50A1D06728D007FBEF7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
