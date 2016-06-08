@@ -13,6 +13,8 @@
 		5A32B50C1D06728D007FBEF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A32B50B1D06728D007FBEF7 /* Assets.xcassets */; };
 		5A32B50F1D06728D007FBEF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A32B50D1D06728D007FBEF7 /* LaunchScreen.storyboard */; };
 		5A32B5181D06B8A7007FBEF7 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32B5171D06B8A7007FBEF7 /* SearchResult.swift */; };
+		5A32B51A1D06C429007FBEF7 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A32B5191D06C429007FBEF7 /* SearchResultCell.xib */; };
+		5A32B51C1D06E5F4007FBEF7 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32B51B1D06E5F4007FBEF7 /* SearchResultCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5A32B50E1D06728D007FBEF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A32B5101D06728D007FBEF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A32B5171D06B8A7007FBEF7 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		5A32B5191D06C429007FBEF7 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
+		5A32B51B1D06E5F4007FBEF7 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,8 @@
 		5A32B4F81D06728C007FBEF7 = {
 			isa = PBXGroup;
 			children = (
+				5A32B51B1D06E5F4007FBEF7 /* SearchResultCell.swift */,
+				5A32B5191D06C429007FBEF7 /* SearchResultCell.xib */,
 				5A32B5031D06728D007FBEF7 /* StoreSearch */,
 				5A32B5021D06728C007FBEF7 /* Products */,
 			);
@@ -136,6 +142,7 @@
 			files = (
 				5A32B50F1D06728D007FBEF7 /* LaunchScreen.storyboard in Resources */,
 				5A32B50C1D06728D007FBEF7 /* Assets.xcassets in Resources */,
+				5A32B51A1D06C429007FBEF7 /* SearchResultCell.xib in Resources */,
 				5A32B50A1D06728D007FBEF7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +156,7 @@
 			files = (
 				5A32B5071D06728D007FBEF7 /* StoreSearchViewController.swift in Sources */,
 				5A32B5181D06B8A7007FBEF7 /* SearchResult.swift in Sources */,
+				5A32B51C1D06E5F4007FBEF7 /* SearchResultCell.swift in Sources */,
 				5A32B5051D06728D007FBEF7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
