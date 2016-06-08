@@ -44,6 +44,9 @@ class StoreSearchViewController: UIViewController {
         tableView.rowHeight = 80
         
         
+        searchBar.becomeFirstResponder()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
