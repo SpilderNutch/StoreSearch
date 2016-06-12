@@ -214,44 +214,52 @@ extension StoreSearchViewController :UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         print("The search text is \(searchBar.text)")
         
-        isLoading = true
-        tableView.reloadData()
 
-        /**
+
+        
         
         if !searchBar.text!.isEmpty{
             //设置serchBar作为FirstResponder,以便于隐藏键盘
             searchBar.resignFirstResponder();
             
+ 
+            isLoading = true
+            tableView.reloadData()
+ 
             hadSearched = true
             
-            let url = urlWithSearchText(searchBar.text!)
+            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
             
-            print(url)
-            
-            if let jsonString = performStoreRequestWithURL(url) {
-                print("Received JSON string '\(jsonString)'")
+            dispatch_async(queue) {
+                let url = self.urlWithSearchText(searchBar.text!)
                 
-                if let dictionary = parseJson(jsonString){
+                print(url)
+                
+                if let jsonString = self.performStoreRequestWithURL(url) {
+                    print("Received JSON string '\(jsonString)'")
                     
-                    isLoading = false
+                    if let dictionary = self.parseJson(jsonString){
+                        
+                        self.searchResults = self.parseDictionary(dictionary)!
+                        
+                        self.searchResults.sortInPlace({result1,result2 in return
+                            result1.name.localizedStandardCompare(result2.name) == .OrderedAscending})
+                        
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                        }
+                        return
+                    }
                     
-                    searchResults = parseDictionary(dictionary)!
-                    
-                    searchResults.sortInPlace({result1,result2 in return
-                    result1.name.localizedStandardCompare(result2.name) == .OrderedAscending})
-                    
-                    tableView.reloadData()
-                    return
                 }
                 
+                dispatch_async(dispatch_get_main_queue()){
+                    self.showNetworkError()
+                }
             }
-            
-            showNetworkError()
-            
-            
         }
- */
+ 
     }
 }
 
