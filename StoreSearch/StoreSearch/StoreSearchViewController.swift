@@ -25,6 +25,8 @@ class StoreSearchViewController: UIViewController {
     var isLoading = false
     
     
+    var dataTask : NSURLSessionDataTask?
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var tableView: UITableView!
@@ -87,10 +89,7 @@ class StoreSearchViewController: UIViewController {
     }
     
     //Parse Json 串
-    func parseJson(jsonString : String )->[String:AnyObject]? {
-        
-        guard let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
-            else{return nil}
+    func parseJson(data: NSData )->[String:AnyObject]? {
         
         do {
             return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
@@ -228,36 +227,40 @@ extension StoreSearchViewController :UISearchBarDelegate {
  
             hadSearched = true
             
-            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            let url = self.urlWithSearchText(searchBar.text!)
             
-            dispatch_async(queue) {
-                let url = self.urlWithSearchText(searchBar.text!)
-                
-                print(url)
-                
-                if let jsonString = self.performStoreRequestWithURL(url) {
-                    print("Received JSON string '\(jsonString)'")
-                    
-                    if let dictionary = self.parseJson(jsonString){
-                        
+            let session = NSURLSession.sharedSession()
+            
+            
+            dataTask = session.dataTaskWithURL(url, completionHandler: {
+                data,response,error in
+                debugPrint("data:\(data)")
+                if let error = error{
+                    print("Failure \(error)")
+                }else{
+                    if let data = data,dictionary = self.parseJson(data) {
                         self.searchResults = self.parseDictionary(dictionary)!
-                        
-                        self.searchResults.sortInPlace({result1,result2 in return
-                            result1.name.localizedStandardCompare(result2.name) == .OrderedAscending})
-                        
+                        self.searchResults.sortInPlace({
+                            return $0.name.localizedStandardCompare($1.name) == .OrderedAscending})
                         dispatch_async(dispatch_get_main_queue()){
                             self.isLoading = false
                             self.tableView.reloadData()
                         }
-                        return
+                    }else{
+                        dispatch_async(dispatch_get_main_queue()){
+                            
+                            self.hadSearched = false
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                            self.showNetworkError()
+                        }
                     }
                     
                 }
-                
-                dispatch_async(dispatch_get_main_queue()){
-                    self.showNetworkError()
-                }
-            }
+            })
+            
+            dataTask?.resume()
+            //dataTask?.cancel()  取消下载任务
         }
  
     }
