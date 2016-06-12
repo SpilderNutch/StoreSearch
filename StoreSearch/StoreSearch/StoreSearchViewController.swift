@@ -31,10 +31,12 @@ class StoreSearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var segmentController: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
         
         //注册SearchCellNib
         let cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
@@ -62,13 +64,89 @@ class StoreSearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func segmentChanged(sender: AnyObject) {
+        
+        performSearch()
+        
+    }
+    
+    func performSearch() {
+        
+        if !searchBar.text!.isEmpty{
+            //设置serchBar作为FirstResponder,以便于隐藏键盘
+            searchBar.resignFirstResponder();
+            
+            
+            isLoading = true
+            tableView.reloadData()
+            
+            hadSearched = true
+            
+            
+            let url = self.urlWithSearchText(searchBar.text!,category: segmentController.selectedSegmentIndex)
+            
+            let session = NSURLSession.sharedSession()
+            
+            
+            dataTask = session.dataTaskWithURL(url, completionHandler: {
+                data,response,error in
+                debugPrint("data:\(data)")
+                if let error = error{
+                    print("Failure \(error)")
+                }else{
+                    if let data = data,dictionary = self.parseJson(data) {
+                        self.searchResults = self.parseDictionary(dictionary)!
+                        self.searchResults.sortInPlace({
+                            return $0.name.localizedStandardCompare($1.name) == .OrderedAscending})
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                        }
+                    }else{
+                        dispatch_async(dispatch_get_main_queue()){
+                            
+                            self.hadSearched = false
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                            self.showNetworkError()
+                        }
+                    }
+                    
+                }
+            })
+            
+            dataTask?.resume()
+            //dataTask?.cancel()  取消下载任务
+            
+        }
 
-    func urlWithSearchText(searchText :String)-> NSURL {
+        
+        
+        
+    }
+    
+
+    func urlWithSearchText(searchText :String, category : Int)-> NSURL {
+        
+        let entityName : String
+        switch category {
+        case 1:
+            entityName = "musicTrack"
+        case 2:
+            entityName = "software"
+        case 3:
+            entityName = "ebook"
+        default :
+            entityName = ""
+        }
+        
         
         //为链接加上可以允许的字符段。
         let escapedSearchText = searchText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
     
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedSearchText)
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200&entity=%@", escapedSearchText,entityName)
+        
+        print("request url : \(urlString)")
         
         let url = NSURL(string: urlString)
         
@@ -213,56 +291,7 @@ extension StoreSearchViewController :UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         print("The search text is \(searchBar.text)")
         
-
-
-        
-        
-        if !searchBar.text!.isEmpty{
-            //设置serchBar作为FirstResponder,以便于隐藏键盘
-            searchBar.resignFirstResponder();
-            
- 
-            isLoading = true
-            tableView.reloadData()
- 
-            hadSearched = true
-            
-            let url = self.urlWithSearchText(searchBar.text!)
-            
-            let session = NSURLSession.sharedSession()
-            
-            
-            dataTask = session.dataTaskWithURL(url, completionHandler: {
-                data,response,error in
-                debugPrint("data:\(data)")
-                if let error = error{
-                    print("Failure \(error)")
-                }else{
-                    if let data = data,dictionary = self.parseJson(data) {
-                        self.searchResults = self.parseDictionary(dictionary)!
-                        self.searchResults.sortInPlace({
-                            return $0.name.localizedStandardCompare($1.name) == .OrderedAscending})
-                        dispatch_async(dispatch_get_main_queue()){
-                            self.isLoading = false
-                            self.tableView.reloadData()
-                        }
-                    }else{
-                        dispatch_async(dispatch_get_main_queue()){
-                            
-                            self.hadSearched = false
-                            self.isLoading = false
-                            self.tableView.reloadData()
-                            self.showNetworkError()
-                        }
-                    }
-                    
-                }
-            })
-            
-            dataTask?.resume()
-            //dataTask?.cancel()  取消下载任务
-        }
- 
+        performSearch()
     }
 }
 

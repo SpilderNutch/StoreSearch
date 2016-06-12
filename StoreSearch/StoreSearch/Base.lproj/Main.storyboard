@@ -32,6 +32,27 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="lTQ-y2-0MX"/>
                                 </connections>
                             </searchBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBG-ss-Bby">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="Czi-8R-Htt">
+                                        <nil key="title"/>
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="sz4-Kc-rDW">
+                                            <rect key="frame" x="150" y="7" width="300" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="All"/>
+                                                <segment title="Music"/>
+                                                <segment title="Software"/>
+                                                <segment title="E-books"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dem-dm-C18"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -40,12 +61,16 @@
                             <constraint firstItem="OZV-Cq-wQP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IU2-Xa-atD"/>
                             <constraint firstItem="OZV-Cq-wQP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="eR9-fr-qWv"/>
                             <constraint firstItem="C9V-Gm-3cf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hG3-Vp-lFC"/>
+                            <constraint firstItem="WBG-ss-Bby" firstAttribute="top" secondItem="OZV-Cq-wQP" secondAttribute="bottom" id="nCd-tn-1eV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C9V-Gm-3cf" secondAttribute="bottom" id="oVS-ZQ-EUf"/>
+                            <constraint firstItem="WBG-ss-Bby" firstAttribute="trailing" secondItem="OZV-Cq-wQP" secondAttribute="trailing" id="rwR-Jr-6mL"/>
                             <constraint firstAttribute="trailing" secondItem="C9V-Gm-3cf" secondAttribute="trailing" id="ufN-cJ-lDy"/>
+                            <constraint firstItem="WBG-ss-Bby" firstAttribute="leading" secondItem="OZV-Cq-wQP" secondAttribute="leading" id="zjF-VO-BEz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="OZV-Cq-wQP" id="WLO-F0-w3T"/>
+                        <outlet property="segmentController" destination="sz4-Kc-rDW" id="Xxo-ER-npM"/>
                         <outlet property="tableView" destination="C9V-Gm-3cf" id="Iqh-fT-lcc"/>
                     </connections>
                 </viewController>
