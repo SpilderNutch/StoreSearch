@@ -15,8 +15,10 @@ class StoreSearchViewController: UIViewController {
         static let searchResultCell = "SearchResultCell"
         static let nothingFoundCell = "NothingFoundCell"
         static let loadingCell = "LoadingCell"
+        
     }
 
+    let showDetailSegue = "ShowDetail"
     
     var searchResults = [SearchResult]()
     
@@ -278,6 +280,8 @@ extension StoreSearchViewController : UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        performSegueWithIdentifier(showDetailSegue, sender: indexPath)
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
