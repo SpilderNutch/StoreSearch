@@ -10,6 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    var searchResult : SearchResult!
+    var downloadTask : NSURLSessionDownloadTask?
+    
 
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var artworkImageView: UIImageView!
@@ -31,6 +34,12 @@ class DetailViewController: UIViewController {
         gestureRecognizer.delegate = self
         view.addGestureRecognizer(gestureRecognizer)
         
+        if  searchResult != nil {
+            updateUI()
+        }
+        
+        view.backgroundColor = UIColor.clearColor()
+        
     }
     
 
@@ -45,7 +54,50 @@ class DetailViewController: UIViewController {
         transitioningDelegate = self
     }
 
+    func updateUI() {
+        nameLabel.text = searchResult.name
+        if searchResult.artistName.isEmpty {
+            artistNameLabel.text = "Unknown"
+        }else{
+            artistNameLabel.text = searchResult.artistName
+        }
+        kindLabel.text = searchResult.kind
+        genreLabel.text = searchResult.genre
+        
+        let  formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.currencyCode  = searchResult.currency
+        
+        let priceText : String
+        if searchResult.price == 0 {
+            priceText = "Free"
+        }else if let text = formatter.stringFromNumber(searchResult.price){
+            priceText = text
+        }else{
+            priceText = ""
+        }
+        
+        priceButton.setTitle(priceText, forState: .Normal)
+        
+        if let url = NSURL(string: searchResult.artworkUrl100){
+            downloadTask = artworkImageView.loadImageWithURL(url)
+        }
+        
+        
+    }
     
+    deinit{
+        print("deinit \(self)")
+        downloadTask?.cancel()
+    }
+    
+    
+    
+    @IBAction func openInStore(sender: AnyObject) {
+        if let url = NSURL(string: searchResult.storeURL){
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
     
 
 }

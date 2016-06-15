@@ -20,6 +20,8 @@
 		5AF856DA1D0D636A007FCB6E /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF856D91D0D636A007FCB6E /* UIImageView+DownloadImage.swift */; };
 		5AF856DC1D0D76B2007FCB6E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF856DB1D0D76B2007FCB6E /* DetailViewController.swift */; };
 		5AF856DE1D0D81EF007FCB6E /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF856DD1D0D81EF007FCB6E /* DimmingPresentationController.swift */; };
+		5AF856E01D0ED153007FCB6E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF856DF1D0ED153007FCB6E /* GradientView.swift */; };
+		5AF856E21D11368D007FCB6E /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF856E11D11368D007FCB6E /* BounceAnimationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		5AF856D91D0D636A007FCB6E /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		5AF856DB1D0D76B2007FCB6E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5AF856DD1D0D81EF007FCB6E /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
+		5AF856DF1D0ED153007FCB6E /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		5AF856E11D11368D007FCB6E /* BounceAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				5AF856D91D0D636A007FCB6E /* UIImageView+DownloadImage.swift */,
 				5AF856DB1D0D76B2007FCB6E /* DetailViewController.swift */,
 				5AF856DD1D0D81EF007FCB6E /* DimmingPresentationController.swift */,
+				5AF856DF1D0ED153007FCB6E /* GradientView.swift */,
+				5AF856E11D11368D007FCB6E /* BounceAnimationController.swift */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -175,8 +181,10 @@
 				5AF856DE1D0D81EF007FCB6E /* DimmingPresentationController.swift in Sources */,
 				5A32B5181D06B8A7007FBEF7 /* SearchResult.swift in Sources */,
 				5A32B51C1D06E5F4007FBEF7 /* SearchResultCell.swift in Sources */,
+				5AF856E21D11368D007FCB6E /* BounceAnimationController.swift in Sources */,
 				5AF856DC1D0D76B2007FCB6E /* DetailViewController.swift in Sources */,
 				5A32B5051D06728D007FBEF7 /* AppDelegate.swift in Sources */,
+				5AF856E01D0ED153007FCB6E /* GradientView.swift in Sources */,
 				5AF856DA1D0D636A007FCB6E /* UIImageView+DownloadImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

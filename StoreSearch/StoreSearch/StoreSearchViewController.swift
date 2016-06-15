@@ -56,7 +56,7 @@ class StoreSearchViewController: UIViewController {
         tableView.rowHeight = 80
         
         
-        searchBar.becomeFirstResponder()
+        //searchBar.becomeFirstResponder()
         
         
     }
@@ -249,7 +249,17 @@ class StoreSearchViewController: UIViewController {
     }
     
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetail" {
+            let detailViewController = segue.destinationViewController as!
+            DetailViewController
+            
+            let indexPath = sender as! NSIndexPath
+            let searchResult = searchResults[indexPath.row]
+            
+            detailViewController.searchResult = searchResult
+        }
+    }
     
     
     
