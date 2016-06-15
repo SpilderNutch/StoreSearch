@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
     var searchResult : SearchResult!
     var downloadTask : NSURLSessionDownloadTask?
     
+    var isPopUp = true
 
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var artworkImageView: UIImageView!
@@ -28,11 +29,16 @@ class DetailViewController: UIViewController {
         view.tintColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 1)
         popupView.layer.cornerRadius = 10
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("close"))
+        if isPopUp {
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("close"))
+            
+            gestureRecognizer.cancelsTouchesInView = false
+            gestureRecognizer.delegate = self
+            view.addGestureRecognizer(gestureRecognizer)
+            
+            view.backgroundColor = UIColor.clearColor()
+        }
         
-        gestureRecognizer.cancelsTouchesInView = false
-        gestureRecognizer.delegate = self
-        view.addGestureRecognizer(gestureRecognizer)
         
         if  searchResult != nil {
             updateUI()
@@ -107,6 +113,10 @@ extension DetailViewController :UIViewControllerTransitioningDelegate {
     
     func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         return DimmingPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BounceAnimationController()
     }
     
 }
