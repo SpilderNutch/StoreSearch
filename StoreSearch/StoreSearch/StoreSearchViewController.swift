@@ -29,6 +29,8 @@ class StoreSearchViewController: UIViewController {
     
     var dataTask : NSURLSessionDataTask?
     
+    var landscapeViewController : LandscapeViewController?
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var tableView: UITableView!
@@ -262,6 +264,57 @@ class StoreSearchViewController: UIViewController {
     }
     
     
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        
+        switch newCollection.verticalSizeClass {
+        case .Compact:
+            showLandscapeViewWithCoordinator(coordinator)
+        case .Regular,.Unspecified:
+            hideLandscapeViewWithCoordinator(coordinator)
+        }
+        
+        
+    }
+    
+    /*显示landscapeView*/
+    func showLandscapeViewWithCoordinator(coordinator : UIViewControllerTransitionCoordinator) {
+        
+        precondition(landscapeViewController == nil)
+        
+        landscapeViewController = storyboard!.instantiateViewControllerWithIdentifier("LandscapeViewController") as? LandscapeViewController
+        
+        if let controller = landscapeViewController{
+            controller.view.frame = view.bounds
+            controller.view.alpha = 0
+            
+            
+            view.addSubview(controller.view)
+            addChildViewController(controller)
+            
+            coordinator.animateAlongsideTransition({_ in controller.view.alpha = 1
+                }, completion: {_ in controller.didMoveToParentViewController(self)})
+            
+            
+            
+        }
+        
+        
+        
+    }
+    
+    /*隐藏landscapeView*/
+    func hideLandscapeViewWithCoordinator(coordinator : UIViewControllerTransitionCoordinator) {
+        
+        if let controller = landscapeViewController {
+            controller.willMoveToParentViewController(nil)
+            controller.view.removeFromSuperview()
+            controller.removeFromParentViewController()
+            landscapeViewController = nil
+        }
+        
+    }
     
     
 }
