@@ -129,6 +129,7 @@ extension DetailViewController :UIViewControllerTransitioningDelegate {
         return BounceAnimationController()
     }
     
+    /**
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch dissmissAnimationStyle {
         case .Slide:
@@ -137,6 +138,7 @@ extension DetailViewController :UIViewControllerTransitioningDelegate {
             return FadeOutAnimationController()
         }
     }
+    */
     
     
     
